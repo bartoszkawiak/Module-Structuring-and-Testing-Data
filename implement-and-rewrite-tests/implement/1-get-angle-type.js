@@ -1,7 +1,5 @@
 // Implement a function getAngleType
 //
-// Don't forget to write tests in implement-tests-with-node-test.
-//
 // When given an angle in degrees, it should return a string indicating the type of angle:
 // - "Acute angle" for angles greater than 0° and less than 90°
 // - "Right angle" for exactly 90°
@@ -16,6 +14,54 @@
 // After you have implemented the function, write tests to cover all the cases, and
 // execute the code to ensure all tests pass.
 
-export function getAngleType(angle) {
-  // TODO: Implement this function
+function getAngleType(angle) {
+  if (angle > 0 && angle < 90) {
+    return `Acute angle`;
+  } else if (angle === 90) {
+    return `Right angle`;
+  } else if (angle > 90 && angle < 180) {
+    return `Obtuse angle`;
+  } else if (angle === 180) {
+    return `Straight angle`;
+  } else if (angle > 180 && angle < 360) {
+    return `Reflex angle`;
+  } else {
+    return `Invalid angle`;
+  }
 }
+
+// The line below allows us to load the getAngleType function into tests in other files.
+// This will be useful in the "rewrite tests with jest" step.
+module.exports = getAngleType;
+
+// This helper function is written to make our assertions easier to read.
+// If the actual output matches the target output, the test will pass
+function assertEquals(actualOutput, targetOutput) {
+  console.assert(
+    actualOutput === targetOutput,
+    `Expected ${actualOutput} to equal ${targetOutput}`
+  );
+}
+
+// TODO: Write tests to cover all cases, including boundary and invalid cases.
+// Example: Identify Right Angles
+const right = getAngleType(90);
+assertEquals(right, "Right angle");
+
+const acute = getAngleType(78);
+assertEquals(acute, "Acute angle");
+
+const obtuse = getAngleType(102);
+assertEquals(obtuse, "Obtuse angle");
+
+const straight = getAngleType(180);
+assertEquals(straight, "Straight angle");
+
+const reflex = getAngleType(250);
+assertEquals(reflex, "Reflex angle");
+
+const invalid = getAngleType(420);
+assertEquals(invalid, "Invalid angle");
+
+const zero = getAngleType(0);
+assertEquals(zero, "Invalid angle");
