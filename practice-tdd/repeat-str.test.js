@@ -20,13 +20,28 @@ test("should repeat the string count times", () => {
 // Given a target string `str` and a `count` equal to 1,
 // When the repeatStr function is called with these inputs,
 // Then it should return the original `str` without repetition.
+test("should return original str value if called once", () => {
+  const str = "hello";
+  const count = 1;
+  expect(repeatStr(str, count)).toEqual(str);
+});
 
 // Case: Handle count of 0:
 // Given a target string `str` and a `count` equal to 0,
 // When the repeatStr function is called with these inputs,
 // Then it should return an empty string.
+test("should return empty string if called with count =0", () => {
+  const str = "hello";
+  const count = 0;
+  expect(repeatStr(str, count)).toEqual("");
+});
 
 // Case: Handle negative count:
 // Given a target string `str` and a negative integer `count`,
 // When the repeatStr function is called with these inputs,
 // Then it should throw an error, as negative counts are not valid.
+test("should throw error as negatives are not valid", () => {
+  const str = "hello";
+  const count = -1;
+  expect(() => repeatStr(str, count)).toThrow(Error);
+});
