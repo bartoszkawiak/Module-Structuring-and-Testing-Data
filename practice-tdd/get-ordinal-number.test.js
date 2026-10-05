@@ -15,6 +15,37 @@ import { getOrdinalNumber } from "./get-ordinal-number.js";
 // Then the function should return a string by appending "st" to the number.
 test("should append 'st' for numbers ending with 1, except those ending with 11", () => {
   expect(getOrdinalNumber(1)).toEqual("1st");
+  expect(getOrdinalNumber(11)).toEqual("11th");
+  expect(getOrdinalNumber(111)).toEqual("111th");
   expect(getOrdinalNumber(21)).toEqual("21st");
   expect(getOrdinalNumber(131)).toEqual("131st");
+});
+// Case 2: Numbers ending with 2 (but not 12)
+// When the number ends with 2, except those ending with 12,
+// Then the function should return a string by appending "nd" to the number.
+test("should append 'nd' for numbers ending with 2, except those ending with 12", () => {
+  expect(getOrdinalNumber(2)).toEqual("2nd");
+  expect(getOrdinalNumber(12)).toEqual("12th");
+  expect(getOrdinalNumber(112)).toEqual("112th");
+  expect(getOrdinalNumber(22)).toEqual("22nd");
+  expect(getOrdinalNumber(132)).toEqual("132nd");
+});
+// Case 3: Numbers ending with 3 (but not 13)
+// When the number ends with 3, except those ending with 13,
+// Then the function should return a string by appending "rd" to the number.
+test("should append 'rd' for numbers ending with 3, except those ending with 13", () => {
+  expect(getOrdinalNumber(3)).toEqual("3rd");
+  expect(getOrdinalNumber(33)).toEqual("33rd");
+  expect(getOrdinalNumber(13)).toEqual("13th");
+  expect(getOrdinalNumber(113)).toEqual("113th");
+  expect(getOrdinalNumber(133)).toEqual("133rd");
+});
+// Case 4: Numbers ending within the range of 4-9 (also  ending with 0)
+// When the number ends within the range of 4-9 or ends with 0.
+// Then the function should return a string by appending "th" to the number.
+test("should append 'th' for numbers ending within 4-9, or ends with 0", () => {
+  expect(getOrdinalNumber(5)).toEqual("5th");
+  expect(getOrdinalNumber(37)).toEqual("37th");
+  expect(getOrdinalNumber(139)).toEqual("139th");
+  expect(getOrdinalNumber(100)).toEqual("100th");
 });
