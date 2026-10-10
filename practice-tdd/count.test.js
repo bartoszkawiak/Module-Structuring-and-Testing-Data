@@ -4,6 +4,21 @@ import { countChar } from "./count.js";
 // When the countChar function is called with these inputs,
 // Then it should:
 
+test("should return 0 for an empty string", () => {
+  expect(countChar("", "a")).toEqual(0);
+});
+test("should return 1 for a single matching character", () => {
+  expect(countChar("a", "a")).toEqual(1);
+});
+
+test("should return 0 for a single non-matching character", () => {
+  expect(countChar("b", "a")).toEqual(0);
+});
+
+test("should return 1 when character appears once", () => {
+  expect(countChar("abc", "b")).toEqual(1);
+});
+
 // Scenario: Multiple Occurrences
 // Given the input string `str`,
 // And a character `char` that occurs one or more times in `str` (e.g., 'a' in 'aaaaa'),
