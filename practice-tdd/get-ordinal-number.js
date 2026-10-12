@@ -15,4 +15,5 @@ export function getOrdinalNumber(num) {
   } else if (strNum.endsWith("3")) {
     return strNum + "rd";
   }
+  return strNum + "th";
 }
