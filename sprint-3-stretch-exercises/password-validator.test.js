@@ -16,11 +16,41 @@ You must breakdown this problem in order to solve it. Find one test case first a
 */
 import { isValidPassword } from "./password-validator.js";
 test("password has at least 5 characters", () => {
-    // Arrange
-    const password = "12345";
-    // Act
-    const result = isValidPassword(password);
-    // Assert
-    expect(result).toEqual(true);
-}
-);
+  // Arrange
+  const password = "Aa1!";
+  // Act
+  const result = isValidPassword(password);
+  // Assert
+  expect(result).toEqual(false);
+});
+
+test("password have at least one uppercase letter(A-Z)", () => {
+  const password = "hello123";
+  const result = isValidPassword(password);
+  expect(result).toEqual(false);
+});
+
+test("password have at least one lowercase letter(a-z)", () => {
+  const password = "A123AA";
+  const result = isValidPassword(password);
+  expect(result).toEqual(false);
+});
+
+test("password have at least one number(0-9)", () => {
+  const password = "RRRqqq";
+  const result = isValidPassword(password);
+  expect(result).toEqual(false);
+});
+
+test("password have at least one special character(!#$%.*&)", () => {
+  const password = "R3ass3";
+  const result = isValidPassword(password);
+  expect(result).toEqual(false);
+});
+
+test("rejects a previously used password", () => {
+  const password = "Hello123!";
+
+  expect(isValidPassword(password)).toEqual(true);
+  expect(isValidPassword(password)).toEqual(false);
+});
